@@ -1,5 +1,5 @@
+document.getElementById(".splashScreen").style.display = "none";
 const canvas = document.querySelector("canvas");
-canvas.style.border = "2px solid black";
 const ctx = canvas.getContext("2d");
 const startScreen = document.querySelector(".splash-screen");
 
@@ -14,9 +14,8 @@ const startScreen = document.querySelector(".splash-screen");
 // };
 
 window.onload = () => {
-  document.getElementById("start-button").onclick = () => {
+  document.getElementById("startButton").onclick = () => {
     console.log("starting");
-    //song.play()
     startGame();
   };
 };

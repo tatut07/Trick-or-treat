@@ -1,4 +1,4 @@
-.splash-screen {
+.splashScreen {
   padding: 100px;
   margin: 0;
   background-image: url(./images/background1.jpg);
@@ -7,6 +7,7 @@
   background-size: 500px auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 #gameLogo {
@@ -33,11 +34,13 @@
   height: 70px;
 }
 
-/* #canvas {
-  position: relative;
-  display: flex;
+#canvas {
+  position: absolute;
+  background-color: white;
+  opacity: 0.2;
+  top: 50px;
+  left: 330px;
 }
-
 
 /* #game-board {
   position: relative;
