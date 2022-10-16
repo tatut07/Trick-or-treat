@@ -1,6 +1,6 @@
 .splashScreen {
-  padding: 100px;
-  margin: 0;
+  padding: 50px;
+  margin-top: 50px;
   background-image: url(./images/background1.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -35,15 +35,10 @@
 }
 
 #canvas {
-  position: absolute;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   background-color: white;
   opacity: 0.2;
   top: 50px;
-  left: 330px;
 }
-
-/* #game-board {
-  position: relative;
-  width: 400px;
-  height: 500px;
-} */
