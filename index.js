@@ -7,11 +7,11 @@ const gameLogo = document.getElementById("gameLogo");
 // const background = new Image();
 // background.src = "./images/background1.jpg";
 const basket = new Image();
-basket.src = "./images/basket.svg";
+basket.src = "./Images/basket.svg";
 const score = new Image();
-score.src = "./images/score.svg";
+score.src = "./Images/score.svg";
 const candy1 = new Image();
-candy1.src = "./images/candy1.svg";
+candy1.src = "./Images/candy1.svg";
 const candy2 = new Image();
 candy2.src = "./images/candy2.svg";
 const candy3 = new Image();
@@ -31,9 +31,26 @@ let basketX = 85;
 let basketY = 350;
 let movingRight = false;
 let movingLeft = false;
+const obstacleWidth = 100;
+const obstacleHeight = 150;
 
 let isGameOver = false;
 let gameId = 0;
+
+//Objects Variables
+let candyArr = [
+  { x: obstaclesRandom(), y: 200, points: 50, img: candy1 },
+  { x: obstaclesRandom(), y: -900, points: 50, img: candy2 },
+  { x: obstaclesRandom(), y: -100, points: 100, img: candy3 },
+  { x: obstaclesRandom(), y: -700, points: 100, img: candy4 },
+  { x: obstaclesRandom(), y: -1200, points: 150, img: candy5 },
+  { x: obstaclesRandom(), y: -2000, points: 150, img: candy6 },
+  { x: obstaclesRandom(), y: -2000, img: rottenApple },
+];
+
+function obstaclesRandom() {
+  return Math.random() * (canvas.width - obstacleWidth);
+}
 
 window.onload = () => {
   canvas.style.display = "none";
@@ -44,13 +61,30 @@ window.onload = () => {
 };
 
 const animate = () => {
-  // ctx.clearReact(0, 0, 450, 600);
+  ctx.clearRect(0, 0, 450, 600);
   ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
   if (movingRight === true) {
     basketX += 2;
   } else if (movingLeft === true) {
     basketX -= 2;
   }
+
+  for (let i = 0; i < candyArr.length; i++) {
+    let current = candyArr[i];
+    ctx.drawImage(
+      current.img,
+      current.x,
+      current.y,
+      obstacleWidth,
+      obstacleHeight
+    );
+    current.y += 3;
+    if (current.y > canvas.height) {
+      current.y = -300;
+      current.x = obstaclesRandom();
+    }
+  }
+
   if (isGameOver) {
     cancelAnimationFrame(gameId);
   } else {
@@ -63,7 +97,7 @@ function startGame() {
   gameLogo.style.display = "none";
   startButton.style.display = "none";
   animate();
-  updateCanvas();
+  // updateCanvas();
 
   document.addEventListener("keydown", (event) => {
     if (event.code === "ArrowRight") {
@@ -80,7 +114,7 @@ function startGame() {
   });
 }
 function updateCanvas() {
-  ctx.clearRect(0, 0, 450, 600);
+  // ctx.clearRect(0, 0, 450, 600);
   ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
   requestAnimationFrame(updateCanvas);
 }
