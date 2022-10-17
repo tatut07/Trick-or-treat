@@ -27,10 +27,13 @@ rottenApple.src = "./images/rottenapple.svg";
 
 const basketHeight = 400;
 const basketWidth = 300;
-let basketX = 90;
+let basketX = 85;
 let basketY = 350;
-// let isGameOver = false;
-// let gameId = 0;
+let movingRight = false;
+let movingLeft = false;
+
+let isGameOver = false;
+let gameId = 0;
 
 window.onload = () => {
   canvas.style.display = "none";
@@ -39,29 +42,45 @@ window.onload = () => {
     startGame();
   };
 };
+
+const animate = () => {
+  // ctx.clearReact(0, 0, 450, 600);
+  ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
+  if (movingRight === true) {
+    basketX += 2;
+  } else if (movingLeft === true) {
+    basketX -= 2;
+  }
+  if (isGameOver) {
+    cancelAnimationFrame(gameId);
+  } else {
+    gameId = requestAnimationFrame(animate);
+  }
+};
+
 function startGame() {
   canvas.style.display = "block";
   gameLogo.style.display = "none";
   startButton.style.display = "none";
   animate();
+  updateCanvas();
 
   document.addEventListener("keydown", (event) => {
     if (event.code === "ArrowRight") {
-      movesRight = true;
+      console.log("We are going right!");
+      movingRight = true;
     } else if (event.code === "ArrowLeft") {
-      movesLeft = true;
+      console.log("We are going left!");
+      movingLeft = true;
     }
   });
   document.addEventListener("keyup", () => {
-    movesRight = false;
-    movesLeft = false;
+    movingRight = false;
+    movingLeft = false;
   });
 }
-const animate = () => {
+function updateCanvas() {
+  ctx.clearRect(0, 0, 450, 600);
   ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
-  if (movesRight === true) {
-    basketX += 2;
-  } else if (movesLeft === true) {
-    basketX -= 2;
-  }
-};
+  requestAnimationFrame(updateCanvas);
+}
