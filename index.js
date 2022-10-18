@@ -68,12 +68,12 @@ window.onload = () => {
 function drawScore() {
   ctx.font = "28px Arial";
   ctx.fillStyle = "white";
-  ctx.fillText(score, 385, 30);
+  ctx.fillText(score, 367, 30);
 }
 
 const animate = () => {
   ctx.clearRect(0, 0, 450, 600);
-  ctx.drawImage(scoreBackground, 300, 0, 150, 40);
+  ctx.drawImage(scoreBackground, 270, 0, 180, 40);
   drawScore();
   ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
   if (movingRight === true) {
