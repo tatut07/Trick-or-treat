@@ -112,11 +112,6 @@ const animate = () => {
   }
 
   if (isGameOver) {
-    ctx.clearRect(0, 0, 450, 600);
-    restartButton.style.display = "block";
-    canvas.style.display = "none";
-    scoreImg.style.display = "none";
-    cancelAnimationFrame(gameId);
     gameOver();
   } else {
     gameId = requestAnimationFrame(animate);
@@ -132,10 +127,8 @@ function startGame() {
 
   document.addEventListener("keydown", (event) => {
     if (event.code === "ArrowRight") {
-      console.log("We are going right!");
       movingRight = true;
     } else if (event.code === "ArrowLeft") {
-      console.log("We are going left!");
       movingLeft = true;
     }
   });
@@ -146,9 +139,14 @@ function startGame() {
 }
 
 function gameOver() {
+  ctx.clearRect(0, 0, 450, 600);
+  restartButton.style.display = "block";
+  canvas.style.display = "none";
+  scoreImg.style.display = "none";
+  cancelAnimationFrame(gameId);
+
   document.addEventListener();
   restartButton.onclick = () => {
-    console.log("starting");
     startGame();
   };
 }
