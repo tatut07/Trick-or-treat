@@ -66,19 +66,21 @@ window.onload = () => {
 };
 
 function drawScore() {
-  ctx.font = "48px Arial";
-  ctx.fillText(score, 8, 20);
+  ctx.font = "28px Arial";
+  ctx.fillStyle = "white";
+  ctx.fillText(score, 385, 30);
 }
 
 const animate = () => {
   ctx.clearRect(0, 0, 450, 600);
+  ctx.drawImage(scoreBackground, 300, 0, 150, 40);
+  drawScore();
   ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
   if (movingRight === true) {
     basketX += 2;
   } else if (movingLeft === true) {
     basketX -= 2;
   }
-  drawScore();
 
   for (let i = 0; i < candyArr.length; i++) {
     let current = candyArr[i];
@@ -144,8 +146,6 @@ function gameOver() {
   canvas.style.display = "none";
   scoreImg.style.display = "none";
   cancelAnimationFrame(gameId);
-
-  document.addEventListener();
   restartButton.onclick = () => {
     startGame();
   };
