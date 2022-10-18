@@ -3,13 +3,15 @@ const ctx = canvas.getContext("2d");
 const startScreen = document.querySelector(".splash-screen");
 const startButton = document.getElementById("startButton");
 const gameLogo = document.getElementById("gameLogo");
+const scoreImg = document.getElementById("gameScore");
+const restartButton = document.getElementById("restartButton");
 
 // const background = new Image();
 // background.src = "./images/background1.jpg";
 const basket = new Image();
 basket.src = "./Images/basket.svg";
-const score = new Image();
-score.src = "./Images/score.svg";
+const scoreBackground = new Image();
+scoreBackground.src = "./Images/score.svg";
 const candy1 = new Image();
 candy1.src = "./Images/candy1.svg";
 const candy2 = new Image();
@@ -25,27 +27,28 @@ candy6.src = "./images/candy6.svg";
 const rottenApple = new Image();
 rottenApple.src = "./images/rottenapple.svg";
 
-const basketHeight = 400;
-const basketWidth = 300;
-let basketX = 85;
-let basketY = 350;
+const basketHeight = 120;
+const basketWidth = 160;
+let basketX = 150;
+let basketY = 470;
 let movingRight = false;
 let movingLeft = false;
-const obstacleWidth = 100;
-const obstacleHeight = 150;
+const obstacleWidth = 40;
+const obstacleHeight = 50;
 
 let isGameOver = false;
 let gameId = 0;
 
-//Objects Variables
+let score = 0;
+
 let candyArr = [
-  { x: obstaclesRandom(), y: 200, points: 50, img: candy1 },
-  { x: obstaclesRandom(), y: -900, points: 50, img: candy2 },
-  { x: obstaclesRandom(), y: -100, points: 100, img: candy3 },
-  { x: obstaclesRandom(), y: -700, points: 100, img: candy4 },
-  { x: obstaclesRandom(), y: -1200, points: 150, img: candy5 },
-  { x: obstaclesRandom(), y: -2000, points: 150, img: candy6 },
-  { x: obstaclesRandom(), y: -2000, img: rottenApple },
+  { x: obstaclesRandom(), y: -200, points: 5, img: candy1 },
+  { x: obstaclesRandom(), y: -900, points: 5, img: candy2 },
+  { x: obstaclesRandom(), y: -100, points: 10, img: candy3 },
+  { x: obstaclesRandom(), y: -700, points: 10, img: candy4 },
+  { x: obstaclesRandom(), y: -1200, points: 15, img: candy5 },
+  { x: obstaclesRandom(), y: -2000, points: 15, img: candy6 },
+  { x: obstaclesRandom(), y: -2000, points: 0, img: rottenApple },
 ];
 
 function obstaclesRandom() {
@@ -54,11 +57,18 @@ function obstaclesRandom() {
 
 window.onload = () => {
   canvas.style.display = "none";
+  scoreImg.style.display = "none";
+  restartButton.style.display = "none";
   startButton.onclick = () => {
     console.log("starting");
     startGame();
   };
 };
+
+function drawScore() {
+  ctx.font = "48px Arial";
+  ctx.fillText(score, 8, 20);
+}
 
 const animate = () => {
   ctx.clearRect(0, 0, 450, 600);
@@ -68,6 +78,7 @@ const animate = () => {
   } else if (movingLeft === true) {
     basketX -= 2;
   }
+  drawScore();
 
   for (let i = 0; i < candyArr.length; i++) {
     let current = candyArr[i];
@@ -83,10 +94,30 @@ const animate = () => {
       current.y = -300;
       current.x = obstaclesRandom();
     }
+    if (
+      basketX < current.x + obstacleWidth &&
+      basketX + basketWidth > current.x &&
+      basketY < current.y + obstacleHeight &&
+      basketY + basketHeight > current.y
+    ) {
+      if (current.points !== 0) {
+        score += current.points;
+        current.y = -300;
+        current.x = obstaclesRandom();
+        console.log(score);
+      } else {
+        isGameOver = true;
+      }
+    }
   }
 
   if (isGameOver) {
+    ctx.clearRect(0, 0, 450, 600);
+    restartButton.style.display = "block";
+    canvas.style.display = "none";
+    scoreImg.style.display = "none";
     cancelAnimationFrame(gameId);
+    gameOver();
   } else {
     gameId = requestAnimationFrame(animate);
   }
@@ -96,6 +127,7 @@ function startGame() {
   canvas.style.display = "block";
   gameLogo.style.display = "none";
   startButton.style.display = "none";
+  scoreImg.style.display = "block";
   animate();
 
   document.addEventListener("keydown", (event) => {
@@ -111,4 +143,12 @@ function startGame() {
     movingRight = false;
     movingLeft = false;
   });
+}
+
+function gameOver() {
+  document.addEventListener();
+  restartButton.onclick = () => {
+    console.log("starting");
+    startGame();
+  };
 }

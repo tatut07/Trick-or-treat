@@ -23,9 +23,9 @@ Good luck!"
 - Add sound to - game itself - catch candy - catch rotten apple - Game over - Player moving
 - Add scoreboard
 
-## Data Structure
+<!-- ## Data Structure
 
-ma
+ma -->
 
 ## States y States Transitions
 
