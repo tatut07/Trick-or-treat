@@ -5,6 +5,7 @@ const startButton = document.getElementById("startButton");
 const gameLogo = document.getElementById("gameLogo");
 const scoreImg = document.getElementById("gameScore");
 const restartButton = document.getElementById("restartButton");
+const scoreImageFinal = document.getElementById("scoreVariable");
 
 // const background = new Image();
 // background.src = "./images/background1.jpg";
@@ -48,7 +49,7 @@ let candyArr = [
   { x: obstaclesRandom(), y: -700, points: 10, img: candy4 },
   { x: obstaclesRandom(), y: -1200, points: 15, img: candy5 },
   { x: obstaclesRandom(), y: -2000, points: 15, img: candy6 },
-  { x: obstaclesRandom(), y: -2000, points: 0, img: rottenApple },
+  { x: obstaclesRandom(), y: -100, points: 0, img: rottenApple },
 ];
 
 function obstaclesRandom() {
@@ -58,23 +59,23 @@ function obstaclesRandom() {
 window.onload = () => {
   canvas.style.display = "none";
   scoreImg.style.display = "none";
-  restartButton.style.display = "none";
+  //restartButton.style.display = "none";
   startButton.onclick = () => {
     console.log("starting");
     startGame();
   };
 };
 
-function drawScore() {
-  ctx.font = "28px Arial";
-  ctx.fillStyle = "white";
-  ctx.fillText(score, 367, 30);
-}
+// function drawScore() {
+//   ctx.font = "28px Arial";
+//   ctx.fillStyle = "white";
+//   ctx.fillText(score, 367, 30);
+// }
 
 const animate = () => {
   ctx.clearRect(0, 0, 450, 600);
-  ctx.drawImage(scoreBackground, 270, 0, 180, 40);
-  drawScore();
+  // ctx.drawImage(scoreBackground, 270, 0, 180, 40);
+  // drawScore();
   ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
   if (movingRight === true) {
     basketX += 2;
@@ -104,6 +105,7 @@ const animate = () => {
     ) {
       if (current.points !== 0) {
         score += current.points;
+        scoreImageFinal.innerHTML = score;
         current.y = -300;
         current.x = obstaclesRandom();
         console.log(score);
@@ -125,6 +127,7 @@ function startGame() {
   gameLogo.style.display = "none";
   startButton.style.display = "none";
   scoreImg.style.display = "block";
+  restartButton.style.display = "none";
   animate();
 
   document.addEventListener("keydown", (event) => {
@@ -144,9 +147,20 @@ function gameOver() {
   ctx.clearRect(0, 0, 450, 600);
   restartButton.style.display = "block";
   canvas.style.display = "none";
-  scoreImg.style.display = "none";
+  scoreImg.style.display = "block";
   cancelAnimationFrame(gameId);
   restartButton.onclick = () => {
+    isGameOver = false;
+    candyArr = [
+      { x: obstaclesRandom(), y: -200, points: 5, img: candy1 },
+      { x: obstaclesRandom(), y: -900, points: 5, img: candy2 },
+      { x: obstaclesRandom(), y: -100, points: 10, img: candy3 },
+      { x: obstaclesRandom(), y: -700, points: 10, img: candy4 },
+      { x: obstaclesRandom(), y: -1200, points: 15, img: candy5 },
+      { x: obstaclesRandom(), y: -2000, points: 15, img: candy6 },
+      { x: obstaclesRandom(), y: -100, points: 0, img: rottenApple },
+    ];
+    score = 0;
     startGame();
   };
 }

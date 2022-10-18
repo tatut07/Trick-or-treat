@@ -23,7 +23,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
-  width: 180px;
+  width: 170px;
   background-image: url(./images/startbtn.svg);
   background-repeat: no-repeat;
   background-color: transparent;
@@ -32,6 +32,27 @@
   font-size: 1.2em;
   font-weight: 800;
   height: 70px;
+  border-radius: 20px;
+}
+
+#startButton:active {
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+}
+
+#game-screen {
+  position: relative;
+}
+
+#scoreVariable {
+  position: absolute;
+  left: 490px;
+  top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  color: white;
+}
+#score {
+  display: flex;
 }
 
 #gameScore {
@@ -51,7 +72,7 @@
 }
 
 #restartButton {
-  display: block;
+  display: none;
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
