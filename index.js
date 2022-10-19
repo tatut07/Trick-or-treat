@@ -29,6 +29,12 @@ const rottenApple = new Image();
 rottenApple.src = "./Images/rottenapple.svg";
 const soundBasket = new Audio("./Sounds/shufflingBasket.mp3");
 soundBasket.volume = 0.1;
+const soundCandy = new Audio("./Sounds/getCandy.mp3");
+soundCandy.volume = 0.1;
+const soundGameOver = new Audio("./Sounds/gameOver.mp3");
+soundGameOver.volume = 0.1;
+const soundBackground = new Audio("./Sounds/Magic.mp3");
+soundBackground.volume = 0.1;
 
 const basketHeight = 120;
 const basketWidth = 160;
@@ -60,6 +66,7 @@ function obstaclesRandom() {
 }
 
 window.onload = () => {
+  soundBackground.play();
   startScreen.style.display = "block";
   restartScreen.style.display = "none";
   canvas.style.display = "none";
@@ -105,8 +112,10 @@ const animate = () => {
         scoreNumbers.innerHTML = score;
         current.y = -300;
         current.x = obstaclesRandom();
+        soundCandy.play();
         console.log(score);
       } else {
+        soundGameOver.play();
         isGameOver = true;
       }
     }
@@ -143,8 +152,10 @@ function startGame() {
   document.addEventListener("keydown", (event) => {
     if (event.code === "ArrowRight") {
       movingRight = true;
+      soundBasket.play();
     } else if (event.code === "ArrowLeft") {
       movingLeft = true;
+      soundBasket.play();
     }
   });
   document.addEventListener("keyup", () => {
