@@ -8,39 +8,21 @@
 
 <body>
     <div class="splashScreen">
-        <div id="gameBackground"></div>
-        <div id="logo"><img id="gameLogo" src="./Images/gameLogo.svg" alt="game logo" /></div>
-        <div id="gameOver"><img id="gameOverImg" src="./Images/gameoverbtn.svg" alt="game over"></div>
-        <div id="score">
-            <img id="gameScore" src="./Images/score.svg" alt="game score" />
-            <div id="scoreVariable"></div>
-            <div id="restartgameBackground"></div>
-        </div>
-        <div id="startGame"><button id="startButton"></button></div>
-        <div id="restartGame"><button id="restartButton"></button></div>
+        <img id="gameLogo" src="./Images/gameLogo.svg" alt="game logo">
+        <button id="startButton"></button>
+    </div>
+    <div id="gamePlay">
         <div id="game-screen">
             <canvas id="canvas" width="450" height="600"></canvas>
         </div>
-
-        <!-- <div class="backgroundScreen">
-            <div id="gameBackground">
-                <img id="gameLogo" src="./Images/gameLogo.svg" alt="game logo">
-                <button id="startButton"></button>
-            </div>
-            <div id="gamePlay">
-                <div id="game-screen">
-                    <canvas id="canvas" width="450" height="600"></canvas>
-                </div>
-                <img id="gameScore" src="./Images/score.svg" alt="game score">
-                <div id="scoreVariable"></div>
-            </div>
-            <div id="gameOver">
-                <img id="gameOverImg" src="./Images/gameoverbtn.svg" alt="game over">
-                <button id="restartButton"></button>
-            </div>
-        </div> -->
-
-        <script type="text/javascript" src="./index.js"></script>
+    </div>
+    <div id="gameOver">
+        <img id="gameOverImg" src="./Images/gameoverbtn.svg" alt="game over">
+        <img id="gameScore2" src="./Images/score.svg" alt="game score">
+        <div id="scoreVariable2"></div>
+        <button id="restartButton"></button>
+    </div>
+    <script type="text/javascript" src="./index.js"></script>
 
 </body>
 
