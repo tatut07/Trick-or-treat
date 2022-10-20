@@ -34,8 +34,6 @@ const candy6 = new Image();
 candy6.src = "./Images/candy6.svg";
 const badCandy = new Image();
 badCandy.src = "./Images/candybad.svg";
-const rottenApple = new Image();
-rottenApple.src = "./Images/rottenapple.svg";
 
 /*Sounds*/
 const soundBasket = new Audio("./Sounds/shufflingBasket.mp3");
@@ -47,14 +45,14 @@ soundGameOver.volume = 0.1;
 const soundBackground = new Audio("./Sounds/Magic.mp3");
 soundBackground.volume = 0.1;
 
-const basketHeight = 120;
-const basketWidth = 160;
+const basketHeight = 80;
+const basketWidth = 130;
 let basketX = 155;
 let basketY = 470;
 let movingRight = false;
 let movingLeft = false;
-const obstacleWidth = 40;
-const obstacleHeight = 50;
+const obstacleWidth = 30;
+const obstacleHeight = 40;
 
 let isGameOver = false;
 let gameId = 0;
@@ -199,7 +197,7 @@ function gameOver() {
       { x: obstaclesRandom(), y: -700, points: 10, img: candy4 },
       { x: obstaclesRandom(), y: -1200, points: 15, img: candy5 },
       { x: obstaclesRandom(), y: -2000, points: 15, img: candy6 },
-      { x: obstaclesRandom(), y: -100, points: 0, img: rottenApple },
+      { x: obstaclesRandom(), y: -100, points: 0, img: badCandy },
     ];
     score = 0;
     startGame();
