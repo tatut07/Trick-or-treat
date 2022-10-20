@@ -47,8 +47,8 @@ soundBackground.volume = 0.1;
 
 const basketHeight = 80;
 const basketWidth = 130;
-let basketX = 155;
-let basketY = 470;
+let basketX = 180;
+let basketY = 550;
 let movingRight = false;
 let movingLeft = false;
 const obstacleWidth = 30;
@@ -75,7 +75,7 @@ function obstaclesRandom() {
 }
 
 window.onload = () => {
-  // soundBackground.play();
+  soundBackground.play();
   startScreen.style.display = "block";
   gameOverScreen.style.display = "none";
   canvas.style.display = "none";
@@ -88,13 +88,13 @@ window.onload = () => {
 function drawScore() {
   ctx.font = "28px Arial";
   ctx.fillStyle = "#FFFFFF";
-  ctx.fillText(score, 250, 50);
+  ctx.fillText(score, 270, 50);
 }
 
 const animate = () => {
   ctx.clearRect(0, 0, 450, 600);
   ctx.drawImage(canvasBackground, 0, 0, canvas.width, canvas.height);
-  ctx.drawImage(scoreBackground, 125, 20, 200, 40);
+  ctx.drawImage(scoreBackground, 150, 20, 200, 40);
   ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
   if (movingRight === true) {
     basketX += 2;
