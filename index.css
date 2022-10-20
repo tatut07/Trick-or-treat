@@ -73,7 +73,7 @@ body {
   margin-right: auto;
   margin-top: 100px;
   width: 170px;
-  background-image: url(./images/startbtn.svg);
+  background-image: url(./Images/startbtn.svg);
   background-repeat: no-repeat;
   background-color: transparent;
   background-position: center;
@@ -95,7 +95,7 @@ body {
   margin-top: 80px;
   margin-bottom: 100px;
   width: 182px;
-  background-image: url(./images/restartbtn.svg);
+  background-image: url(./Images/restartbtn.svg);
   background-repeat: no-repeat;
   background-color: transparent;
   background-position: center;
