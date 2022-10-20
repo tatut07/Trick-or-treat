@@ -34,8 +34,8 @@ const candy6 = new Image();
 candy6.src = "./Images/candy6.svg";
 const badCandy = new Image();
 badCandy.src = "./Images/candybad.svg";
-// const rottenApple = new Image();
-// rottenApple.src = "./Images/rottenapple.svg";
+const rottenApple = new Image();
+rottenApple.src = "./Images/rottenapple.svg";
 
 /*Sounds*/
 const soundBasket = new Audio("./Sounds/shufflingBasket.mp3");
