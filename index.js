@@ -96,11 +96,12 @@ const animate = () => {
   ctx.drawImage(canvasBackground, 0, 0, canvas.width, canvas.height);
   ctx.drawImage(scoreBackground, 150, 20, 200, 40);
   ctx.drawImage(basket, basketX, basketY, basketWidth, basketHeight);
-  if (movingRight === true) {
+  if (movingRight === true && basketX < 370) {
     basketX += 2;
-  } else if (movingLeft === true) {
+  } else if (movingLeft === true && basketX > 0) {
     basketX -= 2;
   }
+
   drawScore();
 
   for (let i = 0; i < candyArr.length; i++) {

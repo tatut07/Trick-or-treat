@@ -20,12 +20,21 @@ Good luck!"
 
 ## Backlog
 
-- Add sound to - game itself - catch candy - catch bad candy - Game over - Player moving
+- Add sound to:
+  - game itself
+  - catch candy ✓
+  - catch bad candy ✓
+  - Game over ✓
+  - Player moving ✓
 - Add scoreboard
 
-<!-- ## Data Structure
+## Data Structure
 
-ma -->
+Three main areas
+
+- Splash Screen
+- Gameplay Screen
+- Game over Screen
 
 ## States y States Transitions
 
